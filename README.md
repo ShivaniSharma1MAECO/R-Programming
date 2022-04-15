@@ -1,9 +1,15 @@
 # R-Programming
 
 
-*code-1 : *
+1. 
 
-scatterplot matrix of family wealth (WEALTH) and science scores (science) by gender (sex) and region (region)
+Question - scatterplot matrix of family wealth WEALTH and science scores science by gender sex and region region
+
+
+Code :
+
+
+
 ggplot(data = dat_small,
        mapping = aes(x = WEALTH, y = science)) +
   geom_point(aes(color = sex)) +
@@ -15,13 +21,22 @@ ggplot(data = dat_small,
  ![ch4-18-1](https://user-images.githubusercontent.com/100988969/163621591-1553a1dc-eef0-4c75-ab5d-6acf47915dda.png)
 
 
-*code-2 :*
-average science scores and N counts by both gender and country and save the dataset as science_summary
+2.
+
+
+
+Question : average science scores and N counts by both gender and country and save the dataset as science_summary
+
+
+Code : 
+
+
 
 science_summary <- dat[, 
                        .(Science = mean(science, na.rm = TRUE), 
                          Freq = .N),
                        by = c("sex", "CNT")]
+
 
 head(science_summary)
 ##       sex       CNT Science  Freq
@@ -42,8 +57,12 @@ ggplot(data = science_summary,
 
 ![ch4-21-1](https://user-images.githubusercontent.com/100988969/163621739-3e7be0ac-13e7-47d8-ae27-064db9d9bfee.png)
 
-*code-3 :*
-number of students from each country) to determine the size of the dots in the plot, using size = Frequency
+3.
+Question- number of students from each country) to determine the size of the dots in the plot, using size = Frequency
+
+Code :
+
+
 
 ggplot(data = science_summary,
        mapping = aes(x = CNT, y = Science, size = Freq, fill = sex)) +
